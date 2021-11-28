@@ -10,9 +10,9 @@
 var computerChoice = 0
 var choice = ""
 var game = 1
-let rock = "rock"
-let paper = "paper"
-let scissors = "scissors"
+var rock = "rock"
+var paper = "paper"
+var scissors = "scissors"
 
 func computerRand() -> Int {
     var rand = Int.random(in:1..<3)
@@ -76,11 +76,11 @@ repeat {
     print("Rock, Paper, or Scissors? ")
     var playerChoice = readLine()
     if !playerChoice.lowercased() == rock {
-        rockCompare(choice, playerChoice)
+        rockCompare(comp:choice, user:playerChoice)
     } else if !playerChoice.lowercased() == paper {
-        paperCompare(choice, playerChoice)
+        paperCompare(comp:choice, user:playerChoice)
     } else if !playerChoice.lowercased() == scissors {
-        scissorsCompare(choice, playerChoice)
+        scissorsCompare(comp:choice, user:playerChoice)
     } else {
         print("Invalid input")
 }
