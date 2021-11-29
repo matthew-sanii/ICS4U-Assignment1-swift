@@ -10,12 +10,12 @@
 var computerChoice = 0
 var choice = ""
 var game = 1
-var rock = "rock"
-var paper = "paper"
-var scissors = "scissors"
+let rock = "rock"
+let paper = "paper"
+let scissors = "scissors"
 
 func computerRand() -> Int {
-    var rand = Int.random(in:1..<3)
+    let rand = Int.random(in:1..<3)
     return rand
 }
 
@@ -51,9 +51,9 @@ func paperCompare(comp: String, user: String) -> Int {
 
 func scissorsCompare(comp: String, user: String) -> Int {
     var result = 1
-    if user.lowercased() == comp.lowercased() {
+    if !user.lowercased() == !comp.lowercased() {
         print("Tie")
-    } else if comp.lowercased() == rock {
+    } else if !comp.lowercased() == rock {
         print("You lose")
         result += 1
         return result
@@ -73,14 +73,16 @@ repeat {
     } else {
         choice = scissors
     }
+    let computer = choice
     print("Rock, Paper, or Scissors? ")
     var playerChoice = readLine()
-    if !playerChoice.lowercased() == rock {
-        rockCompare(comp:choice, user:playerChoice)
-    } else if !playerChoice.lowercased() == paper {
-        paperCompare(comp:choice, user:playerChoice)
-    } else if !playerChoice.lowercased() == scissors {
-        scissorsCompare(comp:choice, user:playerChoice)
+    let player = String(!playerChoice.lowercased())
+    if player == rock {
+        rockCompare(comp:computer, user:player)
+    } else if player == paper {
+        paperCompare(comp:computer, user:player)
+    } else if player == scissors {
+        scissorsCompare(comp:computer, user:player)
     } else {
         print("Invalid input")
 }
