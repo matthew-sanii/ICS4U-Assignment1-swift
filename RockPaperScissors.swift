@@ -7,61 +7,66 @@
 * @since   2021-24-11
 */
 
+import Foundation
 var computerChoice = 0
 var choice = ""
-var game = 1
+var game = 0
 let rock = "rock"
 let paper = "paper"
 let scissors = "scissors"
 
 func computerRand() -> Int {
-    let rand = Int.random(in:1..<3)
+    let rand = Int.random(in: 1..<4)
     return rand
 }
 
 func rockCompare(comp: String, user: String) -> Int {
-    var result = 1
-    if user.lowercased() == comp.lowercased() {
+    var result = 0
+    computerchose(computer: comp)
+    if user == comp {
         print("Tie")
-    } else if comp.lowercased() == paper {
+    } else if comp == paper {
         print("You lose")
         result += 1
-        return result
     } else {
         print("You win!")
         result += 1
-        return result
     }
+    return result
 }
 
 func paperCompare(comp: String, user: String) -> Int {
-    var result = 1
-    if user.lowercased() == comp.lowercased() {
+    var result = 0
+    computerchose(computer: comp)
+    if user == comp {
         print("Tie")
-    } else if comp.lowercased() == scissors {
+    } else if comp == scissors {
         print("You lose")
         result += 1
-        return result
     } else {
         print("You win!")
         result += 1
-        return result
     }
+    return result
 }
 
 func scissorsCompare(comp: String, user: String) -> Int {
-    var result = 1
-    if !user.lowercased() == !comp.lowercased() {
+    var result = 0
+    computerchose(computer: comp)
+    if user == comp {
         print("Tie")
-    } else if !comp.lowercased() == rock {
+    } else if comp == rock {
         print("You lose")
         result += 1
-        return result
     } else {
         print("You win!")
         result += 1
-        return result
     }
+    return result
+}
+
+func computerchose(computer: String) {
+    print("Computer chose: ", computer)
 }
 
 repeat {
@@ -75,15 +80,16 @@ repeat {
     }
     let computer = choice
     print("Rock, Paper, or Scissors? ")
-    var playerChoice = readLine()
-    let player = String(!playerChoice.lowercased())
+    let playerChoice = readLine()!
+    let player = playerChoice.lowercased()
     if player == rock {
-        rockCompare(comp:computer, user:player)
+        game = rockCompare(comp: computer, user: player)
     } else if player == paper {
-        paperCompare(comp:computer, user:player)
+        game = paperCompare(comp: computer, user: player)
     } else if player == scissors {
-        scissorsCompare(comp:computer, user:player)
+        game = scissorsCompare(comp: computer, user: player)
     } else {
         print("Invalid input")
+        exit(0)
 }
-} while(game == 1)
+} while(game == 0)
