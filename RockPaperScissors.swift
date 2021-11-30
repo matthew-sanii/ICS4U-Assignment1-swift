@@ -1,6 +1,6 @@
 /*
-* The BoardFoot program, designed to find the length of a board based
-* on height and width given.
+* The RockPaperScissors program, that has you play Rock Paper Scissors with
+* the computer.
 *
 * @author  Matthew Sanii
 * @version 1.0
